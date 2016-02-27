@@ -7,4 +7,5 @@ RUN echo "deb https://repo.varnish-cache.org/debian/ jessie varnish-4.1" >> /etc
 RUN apt-get update
 RUN apt-get install -y varnish
 
+RUN curl https://raw.githubusercontent.com/xlight/varnish-4.0-configuration-templates/master/default.vcl -o /etc/varnish/default.vcl
 
