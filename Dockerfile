@@ -11,5 +11,5 @@ RUN curl https://raw.githubusercontent.com/xlight/varnish-4.0-configuration-temp
 WORKDIR /root
 ENV BACKEND_PORT 80
 ENV CACHE_SIZE 256m
-ADD start.sh /root
+RUN curl https://raw.githubusercontent.com/xlight/Docker-varnish/master/start.sh -o/root/start.sh
 CMD sh /root/start.sh
