@@ -8,5 +8,8 @@ RUN apt-get update
 RUN apt-get install -y varnish
 
 RUN curl https://raw.githubusercontent.com/xlight/varnish-4.0-configuration-templates/master/default.vcl -o /etc/varnish/default.vcl
-
-CMD /usr/sbin/varnishd -F -P /run/.pid -a :6081 -T localhost:6082 -f /etc/varnish/default.vcl -S /etc/varnish/secret -s malloc,256m
+WORKDIR /root
+ENV BACKEND_PORT 80
+ENV CACHE_SIZE 256m
+ADD start.sh /root
+CMD sh /root/start.sh
