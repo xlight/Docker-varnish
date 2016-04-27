@@ -8,4 +8,4 @@ do
     sed -i "s|.port = \"80\"|.port = \"${value}\"|g" /etc/varnish/default.vcl
 done
 
-/usr/sbin/varnishd -F -P /run/.pid -a :6081 -T localhost:6082 -f /etc/varnish/default.vcl -S /etc/varnish/secret -s malloc,${CACHE_SIZE}
+/usr/sbin/varnishd -F -P /run/.pid -a :${SERV_PORT} -T localhost:6082 -f /etc/varnish/default.vcl -S /etc/varnish/secret -s malloc,${CACHE_SIZE}
