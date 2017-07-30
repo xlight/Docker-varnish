@@ -9,5 +9,5 @@ WORKDIR /root
 ENV BACKEND_PORT 80
 ENV CACHE_SIZE 256m
 ENV SERV_PORT 6081
-RUN curl https://raw.githubusercontent.com/xlight/Docker-varnish/master/start.sh -o/root/start.sh
+RUN curl https://raw.githubusercontent.com/xlight/Docker-varnish/docker-varnish5/start.sh -o/root/start.sh
 CMD sh /root/start.sh
