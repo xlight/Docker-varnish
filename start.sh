@@ -9,7 +9,7 @@ do
 done
 
 cd /etc/varnish.d/ && touch .all_includes.vcl
-ls *.vcl | awk '{print "include " $1 ";"}' > .all_includes.vcl 
+ls *.vcl | awk '{print "include \"" $1 "\";"}' > .all_includes.vcl 
 
 
 /usr/sbin/varnishd -F -P /run/.pid -a :${SERV_PORT} -T localhost:6082 -f /etc/varnish/default.vcl -S /etc/varnish/secret -s malloc,${CACHE_SIZE}
