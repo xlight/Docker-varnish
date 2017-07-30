@@ -8,6 +8,7 @@ do
     sed -i "s|.port = \"80\"|.port = \"${value}\"|g" /etc/varnish/default.vcl
 done
 
+mkdir /etc/varnish.d
 cd /etc/varnish.d/ && touch .all_includes.vcl
 ls *.vcl | awk '{print "include \"/etc/varnish.d/"$1"\";"}' > .all_includes.vcl 
 
