@@ -1,10 +1,7 @@
 FROM debian:jessie
 
-RUN apt-get update
-RUN apt-get install -y apt-transport-https curl
-RUN curl https://repo.varnish-cache.org/GPG-key.txt | apt-key add -
-RUN echo "deb https://repo.varnish-cache.org/debian/ jessie varnish-4.1" >> /etc/apt/sources.list.d/varnish-cache.list
-RUN apt-get update
+RUN apt-get update && apt-get install -y apt-transport-https curl
+RUN curl -s https://packagecloud.io/install/repositories/varnishcache/varnish5/script.deb.sh.deb | bash
 RUN apt-get install -y varnish
 RUN apt-get clean
 RUN curl https://raw.githubusercontent.com/xlight/varnish-4.0-configuration-templates/master/default.vcl -o /etc/varnish/default.vcl
