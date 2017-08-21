@@ -2,11 +2,14 @@
 # Convert environment variables in the conf to fixed entries
 # http://stackoverflow.com/questions/21056450/how-to-inject-environment-variables-in-varnish-configuration
 
+cp /etc/varnish/default.vcl /root
+cd /root
 for name in BACKEND_PORT
 do
     eval value=\$$name
-    sed -i "s|.port = \"80\"|.port = \"${value}\"|g" /etc/varnish/default.vcl
+    sed -i "s|.port = \"80\"|.port = \"${value}\"|g" /root/default.vcl
 done
+mv /root/default.vcl /etc/varnish/default.vcl
 
 mkdir /etc/varnish.d
 cd /etc/varnish.d/ && touch .all_includes.vcl
