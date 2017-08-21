@@ -1,7 +1,7 @@
 FROM debian:jessie
 
 RUN apt-get update && apt-get install -y apt-transport-https curl
-RUN curl -s https://packagecloud.io/install/repositories/varnishcache/varnish5/script.deb.sh.deb | bash
+RUN curl -s https://packagecloud.io/install/repositories/varnishcache/varnish5/script.deb.sh | sudo bash
 RUN apt-get install -y varnish
 RUN apt-get clean
 RUN curl https://raw.githubusercontent.com/xlight/varnish-5.0-configuration-templates/master/default.vcl -o /etc/varnish/default.vcl
